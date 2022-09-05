@@ -1,0 +1,12 @@
+
+
+
+
+.footer {
+    display: flex;
+    justify-content: center;
+}
+
+.footer img {
+    height: 1rem;
+}

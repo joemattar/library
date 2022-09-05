@@ -1,10 +1,54 @@
-let myLibrary = [];
+let myLibrary = [
+    {
+        Id: 1,
+        title: "Foundation",
+        author: "Isaac Asimov",
+        pages: 255,
+        language: "english",
+        yearPublished: 1951,
+        readStatus: true,
+    },
+    {
+        Id: 2,
+        title: "Foundation and Empire",
+        author: "Isaac Asimov",
+        pages: 247,
+        language: "english",
+        yearPublished: 1952,
+        readStatus: true,
+    },
+    {
+        Id: 3,
+        title: "Second Foundation",
+        author: "Isaac Asimov",
+        pages: 210,
+        language: "english",
+        yearPublished: 1953,
+        readStatus: false,
+    },
+];
 
-function Book() {
+function Book(id, title, author, pages, language, yearPublished, readStatus) {
+    this.id = generateBookId;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.language = language;
+    this.yearPublished = yearPublished;
+    
+    if (readStatus) {
+        this.readStatus = readStatus;
+    } else {
+        this.readStatus = false;
+    }
 
 }
 
 function addBookToLibrary() {
+
+}
+
+function generateBookId() {
 
 }
 
