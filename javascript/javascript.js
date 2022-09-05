@@ -74,7 +74,19 @@ function displayBooks() {
         let newCardDiv = document.createElement("div");
         newCardDiv.classList.add("card");
         newCardDiv.classList.add(`card-${myLibrary[i]["id"]}`);
-        
+
+        let newCloseButtonDiv = document.createElement("div");
+        newCloseButtonDiv.classList.add("close");
+        newCloseButtonDiv.classList.add(`close-${myLibrary[i]["id"]}`);
+        newCardDiv.appendChild(newCloseButtonDiv);
+
+        let newImg = document.createElement("img");
+        newImg.src = "./images/close_button.png";
+        newCloseButtonDiv.appendChild(newImg);
+
+
+
+
         let newTitleDiv = document.createElement("div");
         newTitleDiv.textContent = `${myLibrary[i]["title"]}`;
         newCardDiv.appendChild(newTitleDiv);
