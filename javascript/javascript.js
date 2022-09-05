@@ -62,13 +62,11 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+// TO ELABORATE
 function removeBookFromLibrary() {
 
 }
 
-// Write a function that loops through the array and displays each book on the page.
-// You can display them in some sort of table, or each on their own “card”.
-// It might help for now to manually add a few books to your array so you can see the display.
 function displayBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         let newCardDiv = document.createElement("div");
@@ -84,26 +82,28 @@ function displayBooks() {
         newImg.src = "./images/close_button.png";
         newCloseButtonDiv.appendChild(newImg);
 
-
-
-
         let newTitleDiv = document.createElement("div");
+        newTitleDiv.classList.add("title");
         newTitleDiv.textContent = `${myLibrary[i]["title"]}`;
         newCardDiv.appendChild(newTitleDiv);
 
         let newAuthorDiv = document.createElement("div");
+        newAuthorDiv.classList.add("author");
         newAuthorDiv.textContent = `by: ${myLibrary[i]["author"]}`;
         newCardDiv.appendChild(newAuthorDiv);
 
         let newPagesDiv = document.createElement("div");
+        newPagesDiv.classList.add("pages");
         newPagesDiv.textContent = `Number of pages: ${myLibrary[i]["pages"]}`;
         newCardDiv.appendChild(newPagesDiv);
 
         let newLanguageDiv = document.createElement("div");
+        newLanguageDiv.classList.add("language");
         newLanguageDiv.textContent = `Language: ${myLibrary[i]["language"]}`;
         newCardDiv.appendChild(newLanguageDiv);
 
         let newYearPublishedDiv = document.createElement("div");
+        newYearPublishedDiv.classList.add("yearPublished");
         newYearPublishedDiv.textContent = `Year Published: ${myLibrary[i]["yearPublished"]}`;
         newCardDiv.appendChild(newYearPublishedDiv);
 

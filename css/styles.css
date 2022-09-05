@@ -50,6 +50,10 @@ body {
     place-items: center;
 }
 
+.main .card .title {
+    font-weight: 700;
+}
+
 .footer {
     display: flex;
     align-items: center;
