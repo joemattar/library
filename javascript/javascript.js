@@ -29,7 +29,7 @@ let myLibrary = [
 ];
 
 function Book(title, author, pages, language, yearPublished, readStatus) {
-    this.id = generateBookId;
+    this.id = generateBookId();
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -43,19 +43,27 @@ function Book(title, author, pages, language, yearPublished, readStatus) {
     }
 }
 
-function addBookToLibrary() {
-
-}
-
 function generateBookId() {
     let maxId = 0;
     for (let i = 0; i < myLibrary.length; i++) {
-        if (myLibrary[i][id] > maxId) {
-            maxId = myLibrary[i][id];
+        if (myLibrary[i]["id"] > maxId) {
+            maxId = myLibrary[i]["id"];
         }
     }
-    maxId = maxId++;
+    maxId += 1;
     return maxId
+}
+
+
+
+
+// TO ELABORATE
+function addBookToLibrary(book) {
+    myLibrary.push(book);
+}
+
+function removeBookFromLibrary() {
+
 }
 
 // Write a function that loops through the array and displays each book on the page.
@@ -80,5 +88,13 @@ function displayBooks() {
     // toggles a book’s read status on your Book prototype instance.
 
 
-// NOTE: You’re not required to add any type of storage right now.
-// You will have the option to come back to this project later on in the course.
+
+
+
+newBook = new Book("I, Robot", "Isaac Asimov", 34, "english", 1948)
+
+console.log(newBook);
+
+addBookToLibrary(newBook);
+
+console.log(myLibrary)
