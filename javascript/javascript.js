@@ -4,7 +4,7 @@ let myLibrary = [
         title: "Foundation",
         author: "Isaac Asimov",
         pages: 255,
-        language: "english",
+        language: "English",
         yearPublished: 1951,
         readStatus: true,
     },
@@ -13,7 +13,7 @@ let myLibrary = [
         title: "Foundation and Empire",
         author: "Isaac Asimov",
         pages: 247,
-        language: "english",
+        language: "English",
         yearPublished: 1952,
         readStatus: true,
     },
@@ -22,7 +22,7 @@ let myLibrary = [
         title: "Second Foundation",
         author: "Isaac Asimov",
         pages: 210,
-        language: "english",
+        language: "English",
         yearPublished: 1953,
         readStatus: false,
     },
@@ -70,6 +70,41 @@ function removeBookFromLibrary() {
 // You can display them in some sort of table, or each on their own “card”.
 // It might help for now to manually add a few books to your array so you can see the display.
 function displayBooks() {
+    for (let i = 0; i < myLibrary.length; i++) {
+        let newCardDiv = document.createElement("div");
+        newCardDiv.classList.add("card");
+        newCardDiv.classList.add(`card-${myLibrary[i]["id"]}`);
+        
+        let newTitleDiv = document.createElement("div");
+        newTitleDiv.textContent = `${myLibrary[i]["title"]}`;
+        newCardDiv.appendChild(newTitleDiv);
+
+        let newAuthorDiv = document.createElement("div");
+        newAuthorDiv.textContent = `by: ${myLibrary[i]["author"]}`;
+        newCardDiv.appendChild(newAuthorDiv);
+
+        let newPagesDiv = document.createElement("div");
+        newPagesDiv.textContent = `Number of pages: ${myLibrary[i]["pages"]}`;
+        newCardDiv.appendChild(newPagesDiv);
+
+        let newLanguageDiv = document.createElement("div");
+        newLanguageDiv.textContent = `Language: ${myLibrary[i]["language"]}`;
+        newCardDiv.appendChild(newLanguageDiv);
+
+        let newYearPublishedDiv = document.createElement("div");
+        newYearPublishedDiv.textContent = `Year Published: ${myLibrary[i]["yearPublished"]}`;
+        newCardDiv.appendChild(newYearPublishedDiv);
+
+
+
+
+
+
+
+        mainDiv.appendChild(newCardDiv);
+
+
+    }
 
 }
 
@@ -87,14 +122,16 @@ function displayBooks() {
     // To facilitate this you will want to create the function that
     // toggles a book’s read status on your Book prototype instance.
 
+const mainDiv = document.querySelector(".main");
+
 
 
 
 
 newBook = new Book("I, Robot", "Isaac Asimov", 34, "english", 1948)
 
-console.log(newBook);
-
 addBookToLibrary(newBook);
 
-console.log(myLibrary)
+console.log(myLibrary);
+
+displayBooks();
