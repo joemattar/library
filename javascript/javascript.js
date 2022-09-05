@@ -1,6 +1,6 @@
 let myLibrary = [
     {
-        Id: 1,
+        id: 1,
         title: "Foundation",
         author: "Isaac Asimov",
         pages: 255,
@@ -9,7 +9,7 @@ let myLibrary = [
         readStatus: true,
     },
     {
-        Id: 2,
+        id: 2,
         title: "Foundation and Empire",
         author: "Isaac Asimov",
         pages: 247,
@@ -18,7 +18,7 @@ let myLibrary = [
         readStatus: true,
     },
     {
-        Id: 3,
+        id: 3,
         title: "Second Foundation",
         author: "Isaac Asimov",
         pages: 210,
@@ -28,7 +28,7 @@ let myLibrary = [
     },
 ];
 
-function Book(id, title, author, pages, language, yearPublished, readStatus) {
+function Book(title, author, pages, language, yearPublished, readStatus) {
     this.id = generateBookId;
     this.title = title;
     this.author = author;
@@ -41,7 +41,6 @@ function Book(id, title, author, pages, language, yearPublished, readStatus) {
     } else {
         this.readStatus = false;
     }
-
 }
 
 function addBookToLibrary() {
@@ -49,7 +48,14 @@ function addBookToLibrary() {
 }
 
 function generateBookId() {
-
+    let maxId = 0;
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i][id] > maxId) {
+            maxId = myLibrary[i][id];
+        }
+    }
+    maxId = maxId++;
+    return maxId
 }
 
 // Write a function that loops through the array and displays each book on the page.
