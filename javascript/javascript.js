@@ -1,3 +1,5 @@
+let cardDivs = []
+
 let myLibrary = [
     {
         id: 1,
@@ -28,6 +30,7 @@ let myLibrary = [
     },
 ];
 
+// Constructor function for Book() object
 function Book(title, author, pages, language, yearPublished, readStatus) {
     this.id = generateBookId();
     this.title = title;
@@ -43,6 +46,7 @@ function Book(title, author, pages, language, yearPublished, readStatus) {
     }
 }
 
+// Function to automatically generate a new book ID based on myLibrary contents
 function generateBookId() {
     let maxId = 0;
     for (let i = 0; i < myLibrary.length; i++) {
@@ -54,7 +58,29 @@ function generateBookId() {
     return maxId
 }
 
-
+// Function to toggle read status of myLibrary books and of card divs
+function toggleBookReadStatus(checkboxElement) {
+    let bookClass = checkboxElement.classList[0]; //book-3
+    let bookId = Number(bookClass.substring(5)); // 3
+    
+    for (let card of cardDivs) {
+        if (card.classList[0] === bookClass && checkboxElement.checked) {
+            card.classList.add("book-read");
+            for (let book of myLibrary) {
+                if (book["id"] === bookId) {
+                    book["readStatus"] = true;
+                }
+            }
+        } else if (card.classList[0] === bookClass && !checkboxElement.checked) {
+            card.classList.remove("book-read");
+            for (let book of myLibrary) {
+                if (book["id"] === bookId) {
+                    book["readStatus"] = false;
+                }
+            }
+        }
+    }
+}
 
 
 // TO ELABORATE
@@ -70,12 +96,15 @@ function removeBookFromLibrary() {
 function displayBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         let newCardDiv = document.createElement("div");
+        newCardDiv.classList.add(`book-${myLibrary[i]["id"]}`);
         newCardDiv.classList.add("card");
-        newCardDiv.classList.add(`card-${myLibrary[i]["id"]}`);
+        if (myLibrary[i]["readStatus"]) {
+            newCardDiv.classList.add("book-read");
+        }
 
         let newCloseButtonDiv = document.createElement("div");
+        newCloseButtonDiv.classList.add(`book-${myLibrary[i]["id"]}`);
         newCloseButtonDiv.classList.add("close");
-        newCloseButtonDiv.classList.add(`close-${myLibrary[i]["id"]}`);
         newCardDiv.appendChild(newCloseButtonDiv);
 
         let newImg = document.createElement("img");
@@ -107,17 +136,27 @@ function displayBooks() {
         newYearPublishedDiv.textContent = `Year Published: ${myLibrary[i]["yearPublished"]}`;
         newCardDiv.appendChild(newYearPublishedDiv);
 
+        let newReadStatusDiv = document.createElement("div");
+        newCardDiv.appendChild(newReadStatusDiv);
 
+        let newReadStatusLabel = document.createElement("label");
+        newReadStatusLabel.textContent = "Read Status (checked for read):"
+        newReadStatusDiv.appendChild(newReadStatusLabel);
 
+        let newReadStatusInput = document.createElement("input");
+        newReadStatusInput.type = "checkbox";
+        newReadStatusInput.classList.add(`book-${myLibrary[i]["id"]}`);
+        newReadStatusInput.classList.add("read-status");
+        newReadStatusInput.checked = myLibrary[i]["readStatus"];
+        newReadStatusDiv.appendChild(newReadStatusInput);
 
-
-
-
+        newReadStatusInput.addEventListener("change", function () {
+            toggleBookReadStatus(this);
+        })
+        
         mainDiv.appendChild(newCardDiv);
-
-
     }
-
+    cardDivs = document.querySelectorAll("div.card");
 }
 
 
@@ -135,6 +174,8 @@ function displayBooks() {
     // toggles a book’s read status on your Book prototype instance.
 
 const mainDiv = document.querySelector(".main");
+
+
 
 
 
