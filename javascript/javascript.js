@@ -1,5 +1,8 @@
-let cardDivs = []
+const mainDiv = document.querySelector(".main");
+let cardDivs = [];
 
+
+// Would a myLibrary object with keys = book_ids be more efficient than myLibrary array?
 let myLibrary = [
     {
         id: 1,
@@ -60,8 +63,8 @@ function generateBookId() {
 
 // Function to toggle read status of myLibrary books and of card divs
 function toggleBookReadStatus(checkboxElement) {
-    let bookClass = checkboxElement.classList[0]; //book-3
-    let bookId = Number(bookClass.substring(5)); // 3
+    let bookClass = checkboxElement.classList[0]; //example: "book-3"
+    let bookId = Number(bookClass.substring(5)); //example: 3
     
     for (let card of cardDivs) {
         if (card.classList[0] === bookClass && checkboxElement.checked) {
@@ -88,8 +91,27 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
-// TO ELABORATE
-function removeBookFromLibrary() {
+// Function to delete a book card div and corresponding myLibrary array element 
+function removeBookFromLibrary(closeButtonDiv) {
+    let bookClass = closeButtonDiv.classList[0]; //example: "book-3"
+    let bookId = Number(bookClass.substring(5)); //example: 3
+    let bookIndex;
+    let bookCard;
+
+    for (let card of cardDivs) {
+        if (card.classList[0] === bookClass) {
+            bookCard = card;
+            for (let book of myLibrary) {
+                if (book["id"] === bookId) {
+                    bookIndex = myLibrary.indexOf(book);
+                }
+            }
+        }
+    }
+    if (confirm(`Are you sure you want to delete this book? (${myLibrary[bookIndex]["title"]} by ${myLibrary[bookIndex]["author"]})`)) {
+        mainDiv.removeChild(bookCard);
+        myLibrary.splice(bookIndex, 1);
+    }
 
 }
 
@@ -106,6 +128,10 @@ function displayBooks() {
         newCloseButtonDiv.classList.add(`book-${myLibrary[i]["id"]}`);
         newCloseButtonDiv.classList.add("close");
         newCardDiv.appendChild(newCloseButtonDiv);
+
+        newCloseButtonDiv.addEventListener("click", function () {
+            removeBookFromLibrary(this);
+        })
 
         let newImg = document.createElement("img");
         newImg.src = "./images/close_button.png";
@@ -162,21 +188,6 @@ function displayBooks() {
 
 // Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book:
 // author, title, number of pages, whether it’s been read and anything else you might want.
-
-
-// Add a button on each book’s display to remove the book from the library.
-    // You will need to associate your DOM elements with the actual book objects in some way.
-    // One easy solution is giving them a data-attribute that corresponds to the index of the library array.
-
-
-// Add a button on each book’s display to change its read status.
-    // To facilitate this you will want to create the function that
-    // toggles a book’s read status on your Book prototype instance.
-
-const mainDiv = document.querySelector(".main");
-
-
-
 
 
 

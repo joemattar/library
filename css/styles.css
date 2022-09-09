@@ -38,6 +38,10 @@ body {
     position: relative;
 }
 
+.main .card.book-read {
+    background-color: greenyellow;
+}
+
 .main .card .close {
     width: 30px;
     height: 30px;
