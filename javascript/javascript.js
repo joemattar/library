@@ -106,7 +106,7 @@ function addBookToLibrary() {
     let language = bookLanguageInput.textContent;
     let year = bookYearInput.textContent;
     let read = bookReadInput.checked;
-    
+
     let newBook = new Book(title, author, pages, language, year, read)
 
     myLibrary.push(newBook);
@@ -235,13 +235,14 @@ addBookSubmitButton.addEventListener("click", function () {
     
     addBookToLibrary();
     displayBooks();
+
+    console.log(myLibrary);
 })
 
 
+// FIX FORM SUBMISSION BEHAVIOR
 
 
-newBook = new Book("I, Robot", "Isaac Asimov", 34, "english", 1948)
-addBookToLibrary(newBook);
 
 console.log(myLibrary);
 
