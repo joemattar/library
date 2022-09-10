@@ -10,8 +10,39 @@
     </head>
     <body>
         <div class="header">
-            <button id="add-book">Add Book</button>
-
+            <button id="add-book-button">Add Book</button>
+        </div>
+        <div id="add-book-modal" class="modal">
+            <form class="modal-content">
+                <div>
+                    <label for="book-title">Book title:</label>
+                    <input type="text" name="book-title" id="book-title" required>
+                </div>
+                <div>
+                    <label for="book-author">Book author:</label>
+                    <input type="text" name="book-author" id="book-author" required>
+                </div>
+                <div>
+                    <label for="book-pages">Book number of pages:</label>
+                    <input type="number" name="book-pages" id="book-pages" required>
+                </div>
+                <div>
+                    <label for="book-language">Book language:</label>
+                    <input type="text" name="book-language" id="book-language" required>
+                </div>
+                <div>
+                    <label for="book-year">Book publishing year:</label>
+                    <input type="number" name="book-year" id="book-year" required>
+                </div>
+                <div>
+                    <label for="book-read">Book read status (check for read):</label>
+                    <input type="checkbox" name="book-read" id="book-read" required>
+                </div>
+                <div class="add-book-buttons">
+                    <button id="add-book-cancel">CANCEL</button>
+                    <button id="add-book-submit" type="submit">SUBMIT BOOK</button>
+                </div>
+            </form>
         </div>
         <div class="main">
             

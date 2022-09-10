@@ -1,6 +1,19 @@
 const mainDiv = document.querySelector(".main");
 let cardDivs = [];
 
+const addBookButton = document.getElementById("add-book-button");
+
+const modal = document.getElementById("add-book-modal");
+const bookTitleInput = document.getElementById("book-title");
+const bookAuthorInput = document.getElementById("book-author");
+const bookPagesInput = document.getElementById("book-pages");
+const bookLanguageInput = document.getElementById("book-language");
+const bookYearInput = document.getElementById("book-year");
+const bookReadInput = document.getElementById("book-read");
+const bookInputs = document.querySelectorAll(".modal-content input");
+const addBookCancelButton = document.getElementById("add-book-cancel");
+const addBookSubmitButton = document.getElementById("add-book-submit");
+
 
 // Would a myLibrary object with keys = book_ids be more efficient than myLibrary array?
 let myLibrary = [
@@ -85,10 +98,18 @@ function toggleBookReadStatus(checkboxElement) {
     }
 }
 
+// Function to create a new book object and append it to the myLibrary array
+function addBookToLibrary() {
+    let title = bookTitleInput.textContent;
+    let author = bookAuthorInput.textContent;
+    let pages = bookPagesInput.textContent;
+    let language = bookLanguageInput.textContent;
+    let year = bookYearInput.textContent;
+    let read = bookReadInput.checked;
+    
+    let newBook = new Book(title, author, pages, language, year, read)
 
-// TO ELABORATE
-function addBookToLibrary(book) {
-    myLibrary.push(book);
+    myLibrary.push(newBook);
 }
 
 // Function to delete a book card div and corresponding myLibrary array element 
@@ -112,10 +133,11 @@ function removeBookFromLibrary(closeButtonDiv) {
         mainDiv.removeChild(bookCard);
         myLibrary.splice(bookIndex, 1);
     }
-
 }
 
 function displayBooks() {
+    mainDiv.textContent = "";
+
     for (let i = 0; i < myLibrary.length; i++) {
         let newCardDiv = document.createElement("div");
         newCardDiv.classList.add(`book-${myLibrary[i]["id"]}`);
@@ -185,15 +207,40 @@ function displayBooks() {
     cardDivs = document.querySelectorAll("div.card");
 }
 
+// When the user clicks the add book button, open the modal 
+addBookButton.addEventListener("click", function() {
+    for (input of bookInputs) {
+        input.value = "";
+    }
+    bookReadInput.checked = false;
+    modal.style.display = "block";
+})
+  
+// When the user clicks on the cancel button, close the modal
+addBookCancelButton.addEventListener("click", function() {
+    modal.style.display = "none";
+})
 
-// Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book:
-// author, title, number of pages, whether it’s been read and anything else you might want.
+// When the user clicks anywhere outside of the modal content, close it
+window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+})
+
+// When the user clicks on the submit book button, perform form validation then add book
+addBookSubmitButton.addEventListener("click", function () {
+
+    // ADD FORM VALIDATION??
+    
+    addBookToLibrary();
+    displayBooks();
+})
 
 
 
 
 newBook = new Book("I, Robot", "Isaac Asimov", 34, "english", 1948)
-
 addBookToLibrary(newBook);
 
 console.log(myLibrary);
