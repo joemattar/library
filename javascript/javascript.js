@@ -161,34 +161,40 @@ function displayBooks() {
 
         let newTitleDiv = document.createElement("div");
         newTitleDiv.classList.add("title");
+        newTitleDiv.classList.add("card-content");
         newTitleDiv.textContent = `${myLibrary[i]["title"]}`;
         newCardDiv.appendChild(newTitleDiv);
 
         let newAuthorDiv = document.createElement("div");
         newAuthorDiv.classList.add("author");
+        newAuthorDiv.classList.add("card-content");
         newAuthorDiv.textContent = `by: ${myLibrary[i]["author"]}`;
         newCardDiv.appendChild(newAuthorDiv);
 
         let newPagesDiv = document.createElement("div");
         newPagesDiv.classList.add("pages");
+        newPagesDiv.classList.add("card-content");
         newPagesDiv.textContent = `Number of pages: ${myLibrary[i]["pages"]}`;
         newCardDiv.appendChild(newPagesDiv);
 
         let newLanguageDiv = document.createElement("div");
         newLanguageDiv.classList.add("language");
+        newLanguageDiv.classList.add("card-content");
         newLanguageDiv.textContent = `Language: ${myLibrary[i]["language"]}`;
         newCardDiv.appendChild(newLanguageDiv);
 
         let newYearPublishedDiv = document.createElement("div");
         newYearPublishedDiv.classList.add("yearPublished");
+        newYearPublishedDiv.classList.add("card-content");
         newYearPublishedDiv.textContent = `Year Published: ${myLibrary[i]["yearPublished"]}`;
         newCardDiv.appendChild(newYearPublishedDiv);
 
         let newReadStatusDiv = document.createElement("div");
+        newReadStatusDiv.classList.add("card-content");
         newCardDiv.appendChild(newReadStatusDiv);
 
         let newReadStatusLabel = document.createElement("label");
-        newReadStatusLabel.textContent = "Read Status (checked for read):"
+        newReadStatusLabel.textContent = "Status (checked for read):"
         newReadStatusDiv.appendChild(newReadStatusLabel);
 
         let newReadStatusInput = document.createElement("input");
