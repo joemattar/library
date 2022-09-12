@@ -15,7 +15,7 @@ const addBookCancelButton = document.getElementById("add-book-cancel");
 const addBookSubmitButton = document.getElementById("add-book-submit");
 
 
-// Would a myLibrary object with keys = book_ids be more efficient than myLibrary array?
+// Would a myLibrary object with keys = book_ids be more efficient than myLibrary array??
 let myLibrary = [
     {
         id: 1,
@@ -100,11 +100,11 @@ function toggleBookReadStatus(checkboxElement) {
 
 // Function to create a new book object and append it to the myLibrary array
 function addBookToLibrary() {
-    let title = bookTitleInput.textContent;
-    let author = bookAuthorInput.textContent;
-    let pages = bookPagesInput.textContent;
-    let language = bookLanguageInput.textContent;
-    let year = bookYearInput.textContent;
+    let title = bookTitleInput.value;
+    let author = bookAuthorInput.value;
+    let pages = bookPagesInput.value;
+    let language = bookLanguageInput.value;
+    let year = bookYearInput.value;
     let read = bookReadInput.checked;
 
     let newBook = new Book(title, author, pages, language, year, read)
@@ -207,12 +207,19 @@ function displayBooks() {
     cardDivs = document.querySelectorAll("div.card");
 }
 
-// When the user clicks the add book button, open the modal 
-addBookButton.addEventListener("click", function() {
+// Function to clear the Add Book form input fields
+function clearAddBookInputFields() {
     for (input of bookInputs) {
-        input.value = "";
+        if (input.type != "checkbox") {
+            input.value = "";
+        }
     }
     bookReadInput.checked = false;
+}
+
+// When the user clicks the add book button, open the modal 
+addBookButton.addEventListener("click", function() {
+    clearAddBookInputFields();
     modal.style.display = "block";
 })
   
@@ -231,19 +238,16 @@ window.addEventListener("click", function(event) {
 // When the user clicks on the submit book button, perform form validation then add book
 addBookSubmitButton.addEventListener("click", function () {
 
-    // ADD FORM VALIDATION??
-    
+    // ADD FORM VALIDATION
+    // ADD FORM VALIDATION
+
     addBookToLibrary();
+    clearAddBookInputFields();
     displayBooks();
 
-    console.log(myLibrary);
 })
 
-
-// FIX FORM SUBMISSION BEHAVIOR
-
-
-
-console.log(myLibrary);
+// REVISE FORM SUBMISSION BEHAVIOR
+// REVISE FORM SUBMISSION BEHAVIOR
 
 displayBooks();

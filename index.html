@@ -13,35 +13,36 @@
             <button id="add-book-button">Add Book</button>
         </div>
         <div id="add-book-modal" class="modal">
+            <!-- REVISE FORM SUBMISSION BEHAVIOR -->
             <form class="modal-content">
-                <!-- FIX FORM SUBMISSION BEHAVIOR -->
                 <div>
                     <label for="book-title">Book title:</label>
-                    <input type="text" name="book-title" id="book-title" required>
+                    <input type="text" name="book-title" id="book-title" >
                 </div>
                 <div>
                     <label for="book-author">Book author:</label>
-                    <input type="text" name="book-author" id="book-author" required>
+                    <input type="text" name="book-author" id="book-author" >
                 </div>
                 <div>
                     <label for="book-pages">Book number of pages:</label>
-                    <input type="number" name="book-pages" id="book-pages" required>
+                    <input type="number" name="book-pages" id="book-pages" >
                 </div>
                 <div>
                     <label for="book-language">Book language:</label>
-                    <input type="text" name="book-language" id="book-language" required>
+                    <input type="text" name="book-language" id="book-language" >
                 </div>
                 <div>
                     <label for="book-year">Book publishing year:</label>
-                    <input type="number" name="book-year" id="book-year" required>
+                    <input type="number" name="book-year" id="book-year" >
                 </div>
                 <div>
                     <label for="book-read">Book read status (check for read):</label>
-                    <input type="checkbox" name="book-read" id="book-read" required>
+                    <input type="checkbox" name="book-read" id="book-read" >
                 </div>
                 <div class="add-book-buttons">
-                    <button id="add-book-cancel">CANCEL</button>
-                    <button id="add-book-submit" type="submit">SUBMIT BOOK</button>
+                    <button id="add-book-cancel" type="button">CANCEL</button>
+                    <!-- REVISE BUTTON SUBMISSION BEHAVIOR / ADD TYPE=SUBMIT? -->
+                    <button id="add-book-submit" type="button">SUBMIT BOOK</button>
                 </div>
             </form>
         </div>
